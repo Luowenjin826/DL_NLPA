@@ -2,3 +2,4 @@ tabpfn
 streamlit
 fpdf
 numpy
+pickle
