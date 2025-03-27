@@ -1,5 +1,4 @@
-tabpfn
 streamlit
+tabpfn
 fpdf
 numpy
-pickle
