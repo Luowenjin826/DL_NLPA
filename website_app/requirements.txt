@@ -1,5 +1,7 @@
 tabpfn==2.0.1
 streamlit==1.44.0
+pip==25.0
+python==3.13.1
 pickle
 numpy
 fpdf
