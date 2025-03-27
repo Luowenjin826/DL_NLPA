@@ -1,4 +1,0 @@
-tabpfn
-streamlit
-numpy
-fpdf
