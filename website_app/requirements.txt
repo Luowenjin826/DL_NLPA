@@ -1,5 +1,4 @@
 tabpfn==2.0.1
 streamlit
-pickle
 numpy
 fpdf
