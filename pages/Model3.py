@@ -133,22 +133,22 @@ if st.button(predict_button_text):
         'Age': mean_std_dict['Mean']['Age'],
         'BMI': mean_std_dict['Mean']['BMI'],
         'WC': mean_std_dict['Mean']['WC'],
-        'SBP': mean_std_dict['Mean']['SBP'],
-        'DBP': mean_std_dict['Mean']['DBP'],
         'TG': mean_std_dict['Mean']['TG'],
         'LDL': mean_std_dict['Mean']['LDL'],
-        'FBG': mean_std_dict['Mean']['FBG']
+        'FBG': mean_std_dict['Mean']['FBG'],
+        'SBP': mean_std_dict['Mean']['SBP'],
+        'DBP': mean_std_dict['Mean']['DBP']
     }
 
     stds = {
         'Age': mean_std_dict['SD']['Age'],
         'BMI': mean_std_dict['SD']['BMI'],
         'WC': mean_std_dict['SD']['WC'],
-        'SBP': mean_std_dict['SD']['SBP'],
-        'DBP': mean_std_dict['SD']['DBP'],
         'TG': mean_std_dict['SD']['TG'],
         'LDL': mean_std_dict['SD']['LDL'],
-        'FBG': mean_std_dict['SD']['FBG']
+        'FBG': mean_std_dict['SD']['FBG'],
+        'SBP': mean_std_dict['SD']['SBP'],
+        'DBP': mean_std_dict['SD']['DBP']
     }
 
     # Standardize input values
