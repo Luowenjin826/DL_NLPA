@@ -8,7 +8,7 @@ import time
 with open("mean_sd.pkl", "rb") as f:
     mean_std_df = pickle.load(f)
     
-with open("model2.pkl", "rb") as f:
+with open("model3.pkl", "rb") as f:
     model = pickle.load(f)
 
 mean_std_dict = mean_std_df.set_index('Variable').to_dict()
@@ -40,9 +40,6 @@ def create_pdf(input_data, prediction_result, prediction_proba, advice, renin_ty
             continue
         pdf.cell(200, 10, txt=f"{key}: {value}", ln=True)
 
-    renin_unit = "uIU/ml" if renin_type == "Renin Concentration (uIU/ml)" else "ng/mL/h"
-    pdf.cell(200, 10, txt=f"Renin Value: {input_data['Renin Value']} {renin_unit}", ln=True)
-
     pdf.cell(200, 10, txt=f"Predicted Disease: {prediction_result}", ln=True)
 
     pdf.cell(200, 10, txt="Advice:", ln=True)
@@ -69,9 +66,6 @@ if language == "English":
     tg_text = "Triglycerides (mmol/L)"
     ldl_text = "LDL Cholesterol (mmol/L)"
     fbg_text = "Fasting Blood Glucose (mmol/L)"
-    renin_type_text = "Select Renin Type"
-    renin_concentration_text = "Renin Concentration (uIU/ml)"
-    renin_activity_text = "Renin Activity (ng/mL/h)"
     ascvd_text = "Coronary heart diseease or stroke"
     predict_button_text = "Predict"
     predicted_disease_text = "Predicted Disease: "
@@ -87,9 +81,6 @@ elif language == "中文":
     tg_text = "甘油三酯 (mmol/L)"
     ldl_text = "低密度脂蛋白胆固醇 (mmol/L)"
     fbg_text = "空腹血糖 (mmol/L)"
-    renin_type_text = "选择肾素类型"
-    renin_concentration_text = "肾素浓度 (uIU/ml)"
-    renin_activity_text = "肾素活性 (ng/mL/h)"
     ascvd_text = "冠心病或脑卒中"
     predict_button_text = "预测"
     predicted_disease_text = "预测疾病: "
@@ -105,9 +96,6 @@ elif language == "Italiano":
     tg_text = "Trigliceridi (mmol/L)"
     ldl_text = "Colesterolo LDL (mmol/L)"
     fbg_text = "Glucosio a Digiuno (mmol/L)"
-    renin_type_text = "Seleziona Tipo di Renina"
-    renin_concentration_text = "Concentrazione di Renina (uIU/ml)"
-    renin_activity_text = "Attività di Renina (ng/mL/h)"
     ascvd_text = "Malattia coronarica o ictus"
     predict_button_text = "Predici"
     predicted_disease_text = "Malattia Predetta: "
@@ -122,17 +110,12 @@ with col1:
     bmi = st.number_input(bmi_text, min_value=10.00, max_value=80.00, value=25.00, format="%.2f")
     wc = st.number_input(wc_text, min_value=30.0, max_value=150.0, value=80.0, format="%.1f")
     sbp = st.number_input(sbp_text, min_value=40, max_value=300, value=120)
-    dbp = st.number_input(dbp_text, min_value=20, max_value=200, value=80)
+    
 with col2:
+    dbp = st.number_input(dbp_text, min_value=20, max_value=200, value=80)
     tg = st.number_input(tg_text, min_value=0.00, max_value=15.00, value=1.50, format="%.2f")
     ldl = st.number_input(ldl_text, min_value=0.00, max_value=15.00, value=2.50, format="%.2f")
     fbg = st.number_input(fbg_text, min_value=2.00, max_value=30.00, value=5.00, format="%.2f")
-    renin_type = st.selectbox(renin_type_text, [renin_concentration_text, renin_activity_text])
-    if renin_type == renin_concentration_text:
-        renin_value = st.number_input(renin_concentration_text, min_value=0.0, max_value=1000.0, value=20.0, format="%.1f")
-    else:
-        renin_value = st.number_input(renin_activity_text, min_value=0.0, max_value=100.0, value=2.0, format="%.1f")
-
     ascvd = st.selectbox(ascvd_text, ["Yes", "No"])
     
 # Prediction and advice
@@ -167,19 +150,6 @@ if st.button(predict_button_text):
         'SBP': mean_std_dict['SD']['SBP'],
         'DBP': mean_std_dict['SD']['DBP']
     }
-
-    # Handle Renin based on renin_type
-    if renin_type == "Renin Concentration (uIU/ml)":
-        renin_mean = mean_std_dict['Mean']['Renin_concentration'] 
-        renin_std = mean_std_dict['SD']['Renin_concentration']    
-    else:
-        renin_mean = mean_std_dict['Mean']['Renin_activity'] 
-        renin_std = mean_std_dict['SD']['Renin_activity'] 
-
-    # Add renin to the input values, means, and stds
-    input_values = np.append(input_values, np.log2(renin_value))
-    means['Renin'] = renin_mean
-    stds['Renin'] = renin_std
 
     # Standardize input values
     z_scores = [(input_values[i] - list(means.values())[i]) / list(stds.values())[i] for i in range(len(input_values))]
@@ -278,7 +248,6 @@ if st.button(predict_button_text):
         'TG': tg,
         'LDL': ldl,
         'FBG': fbg,
-        'Renin Value': renin_value,
         'Coronary heart diseease or stroke': ascvd
     }
 
@@ -295,4 +264,3 @@ if st.button(predict_button_text):
         st.download_button(label="Scarica il rapporto", data=pdf_data, file_name="rapporto.pdf", mime="application/pdf")
     else:
         st.download_button(label="Download Report as PDF", data=pdf_data, file_name="prediction_report.pdf", mime="application/pdf")
-
