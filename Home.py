@@ -10,8 +10,7 @@ if language == "中文":
         """
         ### 用户可根据本地可用数据选择相应模型：
         - **模型1**: 如果可获得血浆醛固酮浓度和肾素水平
-        - **模型2**: 如果无法获得血浆醛固酮浓度，但可获得肾素水平 
-        - **模型3**: 如果血浆醛固酮浓度和肾素水平均不可获得
+        - **模型2**: 如果血浆醛固酮浓度和肾素水平均不可获得
         """,
         unsafe_allow_html=True
     )
@@ -22,8 +21,7 @@ elif language == "English":
         """
         ### Users can select the appropriate model based on locally available data:
         - **Model 1**: If plasma aldosterone concentration and renin level are available
-        - **Model 2**: If plasma aldosterone concentration is unavailable, but renin level is available
-        - **Model 3**: If neither plasma aldosterone concentration nor renin level is available
+        - **Model 2**: If neither plasma aldosterone concentration nor renin level is available
         """,
         unsafe_allow_html=True
     )
@@ -34,8 +32,7 @@ elif language == "Italiano":
         """
         ### Gli utenti possono selezionare il modello appropriato in base ai dati disponibili localmente:
         - **Modello 1**: Se sono disponibili concentrazione di aldosterone plasmatico e livello di renina
-        - **Modello 2**: Se la concentrazione di aldosterone plasmatico non è disponibile, ma il livello di renina è disponibile
-        - **Modello 3**: Se né la concentrazione di aldosterone plasmatico né il livello di renina sono disponibili
+        - **Modello 2**: Se né la concentrazione di aldosterone plasmatico né il livello di renina sono disponibili
         """,
         unsafe_allow_html=True
     )
