@@ -91,8 +91,8 @@ elif language == "Italiano":
     sex_text = "Sesso"
     sex_options = ["Maschio", "Femmina"]
     bmi_text = "BMI (kg/m2)"
-    sbp_text = "Pressione Sanguigna Sistolica (mmHg)"
-    dbp_text = "Pressione Sanguigna Diastolica (mmHg)"
+    sbp_text = "Pressione Arteriosa Sistolica (mmHg)"
+    dbp_text = "Pressione Arteriosa Diastolica (mmHg)"
     pac_text = "Concentrazione di aldosterone plasmatica (ng/dL)"
     renin_type_text = "Seleziona Tipo di Renina"
     renin_concentration_text = "Concentrazione di Renina (uIU/ml)"
