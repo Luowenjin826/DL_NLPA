@@ -91,8 +91,8 @@ elif language == "Italiano":
     sex_options = ["Maschio", "Femmina"]
     bmi_text = "BMI (kg/m2)"
     wc_text = "Circonferenza Vita (cm)"
-    sbp_text = "Pressione Sanguigna Sistolica (mmHg)"
-    dbp_text = "Pressione Sanguigna Diastolica (mmHg)"
+    sbp_text = "Pressione Arteriosa Sistolica (mmHg)"
+    dbp_text = "Pressione Arteriosa Diastolica (mmHg)"
     tg_text = "Trigliceridi (mmol/L)"
     ldl_text = "Colesterolo LDL (mmol/L)"
     fbg_text = "Glucosio a Digiuno (mmol/L)"
