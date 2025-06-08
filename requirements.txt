@@ -1,6 +1,6 @@
 scikit-learn==1.5.2
-tabpfn==2.0.3
-streamlit
+tabpfn==2.0.1
+streamlit==1.44.0
 numpy
 joblib
 pandas
