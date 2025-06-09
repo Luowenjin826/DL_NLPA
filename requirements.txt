@@ -1,4 +1,4 @@
-python==3.13.1
+python==3.13
 streamlit
 tabpfn
 numpy==2.1.3
