@@ -1,4 +1,3 @@
-python
 streamlit
 tabpfn
 numpy==2.1.3
