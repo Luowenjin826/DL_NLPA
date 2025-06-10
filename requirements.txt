@@ -1,0 +1,7 @@
+streamlit
+tabpfn
+numpy
+pandas
+joblib==1.5.1
+scikit-learn==1.6.1
+torch==2.7.1
