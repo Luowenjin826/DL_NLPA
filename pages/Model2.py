@@ -1,14 +1,3 @@
-
-
-# 禁用文件监视器
-import streamlit as st
-st.set_option('server.fileWatcherType', 'none')
-
-# 修复 torch 路径
-import torch
-if hasattr(torch, '__path__') and not hasattr(torch.__path__, '_path'):
-    torch.__path__._path = [path for path in torch.__path__]
-
 import streamlit as st
 import numpy as np
 import pickle
