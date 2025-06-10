@@ -1,12 +1,3 @@
-try:
-    import torch
-    if not hasattr(torch, "__path__"):
-        torch.__path__ = []
-    import sys
-    sys.modules["torch._classes"] = None
-except ImportError:
-    pass
-
 import streamlit as st
 import numpy as np
 import pickle
