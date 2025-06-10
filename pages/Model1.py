@@ -4,10 +4,11 @@ import pickle
 import tabpfn
 
 with open("mean_sd.pkl", "rb") as f:
-        mean_std_df = pickle.load(f)
+    mean_std_df = pickle.load(f)
         
 with open("main_model.pkl", "rb") as f:
-        model = pickle.load(f)
+    model = pickle.load(f)
+
 mean_std_dict = mean_std_df.set_index('Variable').to_dict()
 
 # Language selection
