@@ -4,6 +4,8 @@ import torch
 import tabpfn
 import joblib
 import pickle
+import os
+os.environ["STREAMLIT_SERVER_FILE_WATCHER_TYPE"] = "none"
 
 with open("mean_sd.pkl", "rb") as f:
     mean_std_df = pickle.load(f)
